@@ -1,0 +1,93 @@
+[
+    {
+        "id": "f1775517.1d1ea8",
+        "type": "tab",
+        "label": "流程2",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "5abdd35.cb6002c",
+        "type": "inject",
+        "z": "f1775517.1d1ea8",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "5",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 110,
+        "y": 180,
+        "wires": [
+            [
+                "16a41f33.4c89f1",
+                "740e7010.58219"
+            ]
+        ]
+    },
+    {
+        "id": "16a41f33.4c89f1",
+        "type": "function",
+        "z": "f1775517.1d1ea8",
+        "name": "Payload",
+        "func": "msg.headers=\n{\n    deviceKey: \"gt7k910B9vgSh0db\"\n};\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 340,
+        "y": 120,
+        "wires": [
+            [
+                "fb3a3725.7828e8"
+            ]
+        ]
+    },
+    {
+        "id": "fb3a3725.7828e8",
+        "type": "http request",
+        "z": "f1775517.1d1ea8",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": false,
+        "url": "http://api.mediatek.com/mcs/v2/devices/D3ChfR5s/datachannels/Temperature/datapoints.csv",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "x": 520,
+        "y": 120,
+        "wires": [
+            [
+                "e7ab4946.b566f8"
+            ]
+        ]
+    },
+    {
+        "id": "e7ab4946.b566f8",
+        "type": "http response",
+        "z": "f1775517.1d1ea8",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 690,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "740e7010.58219",
+        "type": "debug",
+        "z": "f1775517.1d1ea8",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 350,
+        "y": 220,
+        "wires": []
+    }
+]
