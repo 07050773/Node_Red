@@ -1,0 +1,151 @@
+[
+    {
+        "id": "59956685.fd4798",
+        "type": "tab",
+        "label": "流程6",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "a99bd6ae.b546f8",
+        "type": "http in",
+        "z": "59956685.fd4798",
+        "name": "Set GPIO5",
+        "url": "/setgpio5",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 120,
+        "y": 220,
+        "wires": [
+            [
+                "eb76ca79.f2c2a8",
+                "d20bbbcd.d7f528"
+            ]
+        ]
+    },
+    {
+        "id": "eb76ca79.f2c2a8",
+        "type": "function",
+        "z": "59956685.fd4798",
+        "name": "Set to 1",
+        "func": "msg.payload = 1;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 320,
+        "y": 260,
+        "wires": [
+            [
+                "461ed7ee.267a48"
+            ]
+        ]
+    },
+    {
+        "id": "461ed7ee.267a48",
+        "type": "rpi-gpio out",
+        "z": "59956685.fd4798",
+        "name": "",
+        "pin": "29",
+        "set": "",
+        "level": "0",
+        "freq": "",
+        "out": "out",
+        "x": 500,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "d20bbbcd.d7f528",
+        "type": "function",
+        "z": "59956685.fd4798",
+        "name": "Return Status",
+        "func": "msg.payload = \"GPIO set to HIGH\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 320,
+        "y": 180,
+        "wires": [
+            [
+                "8acb31a3.c359a",
+                "5f5a93fb.8f5a0c"
+            ]
+        ]
+    },
+    {
+        "id": "8acb31a3.c359a",
+        "type": "http response",
+        "z": "59956685.fd4798",
+        "name": "http",
+        "statusCode": "",
+        "headers": {},
+        "x": 770,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "5f5a93fb.8f5a0c",
+        "type": "debug",
+        "z": "59956685.fd4798",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 790,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "f42d1093.38cd7",
+        "type": "http in",
+        "z": "59956685.fd4798",
+        "name": "Clear GPIO5",
+        "url": "/clear5",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 130,
+        "y": 440,
+        "wires": [
+            [
+                "b6f60c84.729c6",
+                "cccbf674.09ea28"
+            ]
+        ]
+    },
+    {
+        "id": "b6f60c84.729c6",
+        "type": "function",
+        "z": "59956685.fd4798",
+        "name": "Clear to 0",
+        "func": "msg.payload = 0;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 320,
+        "y": 380,
+        "wires": [
+            [
+                "461ed7ee.267a48"
+            ]
+        ]
+    },
+    {
+        "id": "cccbf674.09ea28",
+        "type": "function",
+        "z": "59956685.fd4798",
+        "name": "Return Status",
+        "func": "msg.payload = \"GPIO5 set to LOW\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 340,
+        "y": 500,
+        "wires": [
+            [
+                "8acb31a3.c359a",
+                "5f5a93fb.8f5a0c"
+            ]
+        ]
+    }
+]
